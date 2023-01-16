@@ -111,12 +111,7 @@ class x1337:
             return None, None
 
     async def search(self, query, page, limit):
-        connector = ProxyConnector(
-                proxy_type=ProxyType.SOCKS5,
-                host='127.0.0.1',
-                port=9050,
-                rdns=True,
-            )        
+        connector = ProxyConnector.from_url('socks5://mytor:9050')
         async with aiohttp.ClientSession(connector=connector) as session:            
             self.LIMIT = limit
             start_time = time.time()
