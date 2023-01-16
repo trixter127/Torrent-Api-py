@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from helper.asyncioPoliciesFix import decorator_asyncio_fix
 from helper.html_scraper import Scraper
 
+from aiohttp_socks import ProxyType, ProxyConnector, ChainProxyConnector
 
 class x1337:
     def __init__(self):
@@ -110,7 +111,13 @@ class x1337:
             return None, None
 
     async def search(self, query, page, limit):
-        async with aiohttp.ClientSession() as session:
+        connector = ProxyConnector(
+                proxy_type=ProxyType.SOCKS5,
+                host='127.0.0.1',
+                port=9050,
+                rdns=True,
+            )        
+        async with aiohttp.ClientSession(connector=connector) as session:            
             self.LIMIT = limit
             start_time = time.time()
             url = self.BASE_URL + "/search/{}/{}/".format(query, page)

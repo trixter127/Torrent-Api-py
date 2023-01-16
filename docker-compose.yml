@@ -1,0 +1,9 @@
+version: "3.4"
+
+services:
+  app:
+    build: .
+    command: python3 main.py
+    restart: on-failure
+    ports:
+      - "8080:8080"

@@ -9,3 +9,5 @@ lxml
 requests
 gunicorn
 redis
+python-socks[asyncio]
+aiohttp-socks
