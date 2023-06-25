@@ -3,10 +3,6 @@ services:
     public: true
     build: .
     replicas: 1
-    environment:
-      - REDIS_URI=redis://default:1270@144.24.140.114:8040/ #change this REDIS_URI get it from redistogo.com
-      - PYTHON_ENV=prod
-      - CACHE_EXPIRATION=180
     ports:
       - 8080
     resources:
